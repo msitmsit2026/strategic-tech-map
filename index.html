@@ -816,16 +816,18 @@
       }
       .tech-laws {
         width: 100%;
-        grid-template-columns: repeat(5, 1fr);
-        gap: 3px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
       }
 
-      /* Law pills: auto-size to fit text */
+      /* Law pills: auto-size to fit text, no overlap */
       .tl-pill {
         width: auto;
         min-width: 0;
-        padding: 2px 4px;
+        padding: 3px 6px;
         font-size: 8px;
+        flex-shrink: 0;
       }
 
       /* Specs accordion: full width, no spacer */
@@ -838,11 +840,11 @@
       }
       .specs-panel-grid {
         width: 100%;
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(2, 1fr);
       }
       .specs-col {
         font-size: 10px;
-        padding: 8px 4px;
+        padding: 8px 6px;
         min-height: 36px;
       }
 
@@ -855,8 +857,10 @@
       .sector-header-info { min-width: 0; width: 100%; }
       .sector-header-name { font-size: 18px; }
 
-      /* Sector header law grid: stack on narrow screens */
+      /* Sector header law grid: wrap to 2-3 columns on narrow screens */
       .sector-header-info > div[style*="grid-template-columns"] {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 6px !important;
         font-size: 11px !important;
       }
 
