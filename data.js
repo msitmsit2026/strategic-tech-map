@@ -677,7 +677,7 @@ const TECH_DATA = {
       ]
     },
     {
-      id: 19, name: "콘텐츠 기술", icon: "🎮",
+      id: 19, name: "콘텐츠 기술", icon: "🎬",
       laws: {
         strategic: "-",
         tax_strategic: "-",
