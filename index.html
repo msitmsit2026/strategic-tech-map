@@ -106,6 +106,12 @@
       backdrop-filter: blur(12px);
     }
 
+    .header-title {
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .header-title:hover { opacity: 0.75; }
+
     .logo-badge {
       background: linear-gradient(135deg, var(--accent), var(--accent2));
       -webkit-background-clip: text;
@@ -805,7 +811,7 @@
 <body>
 
 <header>
-  <div>
+  <div class="header-title" onclick="goHome()">
     <div class="logo-badge">Korea Strategic Tech</div>
     <h1>국가 전략기술 <span>분류체계 현황맵</span></h1>
   </div>
@@ -1368,6 +1374,21 @@ function renderSearch(main, rcDiv) {
   }).join('');
 
   main.innerHTML = `<div class="search-results">${html}</div>`;
+}
+
+// ─── HOME NAVIGATION ───
+function goHome() {
+  pushHistoryState();
+  state.view = 'overview';
+  state.activeSector = null;
+  state.searchQuery = '';
+  document.getElementById('search-input').value = '';
+  document.querySelectorAll('.view-btn').forEach((b, i) => {
+    b.classList.toggle('active', i === 0);
+  });
+  buildSectorNav();
+  render();
+  window.scrollTo(0, 0);
 }
 
 // ─── THEME TOGGLE ───
