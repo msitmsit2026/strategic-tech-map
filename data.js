@@ -2,7 +2,7 @@ const TECH_DATA = {
   meta: {
     title: "국가 전략기술 분류체계 현황",
     laws: [
-      { id: "strategic", name: "국가전략기술육성법", short: "전략육성법", color: "#1a56db", sub: "국가전략기술" },
+      { id: "strategic", name: "국가전략기술육성법", short: "전략기술육성법", color: "#1a56db", sub: "국가전략기술" },
       { id: "tax_strategic", name: "조세특례제한법(국가전략기술)", short: "조특법-전략", color: "#7e3af2", sub: "국가전략기술" },
       { id: "tax_growth", name: "조세특례제한법(신성장원천기술)", short: "조특법-신성장", color: "#057a55", sub: "신성장원천기술" },
       { id: "advanced", name: "국가첨단전략산업법", short: "첨단전략산업법", color: "#d03801", sub: "국가첨단전략기술" },
@@ -15,7 +15,7 @@ const TECH_DATA = {
       laws: {
         strategic: "반도체·디스플레이",
         tax_strategic: "반도체",
-        tax_growth: "차세대 전자정보 디바이스, 첨단 소부장",
+        tax_growth: "차세대 전자정보 디바이스 / 첨단 소·부·장",
         advanced: "반도체",
         protection: "반도체, 전기전자"
       },
@@ -66,7 +66,7 @@ const TECH_DATA = {
           name: "2-1. 유기발광 디스플레이",
           items: [
             { name: "유기발광 패널", laws: { strategic: false, tax_strategic: true, tax_growth: true, advanced: true, protection: true }, note: "AMOLED 패널 설계/제조/공정/모듈/구동" },
-            { name: "유기발광 소재부품장비", laws: { strategic: true, tax_strategic: true, tax_growth: true, advanced: false, protection: false }, note: "조특법-전략 : 패널제조, TFT형성 장비 부품, 하이브리드 커버 윈도우 등" }
+            { name: "유기발광 소재·부품·장비", laws: { strategic: true, tax_strategic: true, tax_growth: true, advanced: false, protection: false }, note: "조특법-전략 : 패널제조, TFT형성 장비 부품, 하이브리드 커버 윈도우 등" }
           ]
         },
         {
@@ -74,7 +74,7 @@ const TECH_DATA = {
           items: [
             { name: "무기발광패널-퀀텀닷", laws: { strategic: true, tax_strategic: true, tax_growth: true, advanced: true, protection: false }, note: "반치폭 40나노미터 이하" },
             { name: "무기발광패널-마이크로LED", laws: { strategic: true, tax_strategic: true, tax_growth: true, advanced: true, protection: true }, note: "조특법-전략 : 칩크기 50나노미터 이하 / 국가첨단전략 : 칩크기 30나노미터 이하" },
-            { name: "무기발광 소재부품장비", laws: { strategic: true, tax_strategic: true, tax_growth: true, advanced: false, protection: false }, note: "" }
+            { name: "무기발광 소재·부품·장비", laws: { strategic: true, tax_strategic: true, tax_growth: true, advanced: false, protection: false }, note: "" }
           ]
         },
         {
@@ -196,6 +196,12 @@ const TECH_DATA = {
           items: [
             { name: "통신 부품/장비", laws: { strategic: true, tax_strategic: false, tax_growth: true, advanced: false, protection: true }, note: "국가핵심기술 : 전력증폭기, 광통신 핵심기술 / 조특법-신성장 : 단말 특화부품(통신모듈, 모뎀, RF침셋) / 국가전략기술 : 5G-6G 고효율 통신부품" }
           ]
+        },
+        {
+          name: "5-4. 기타 관련 기술",
+          items: [
+            { name: "(기타: 사물인터넷, UHD 방송)", laws: { strategic: false, tax_strategic: false, tax_growth: true, advanced: false, protection: false }, note: "" }
+          ]
         }
       ]
     },
@@ -253,7 +259,8 @@ const TECH_DATA = {
         {
           name: "7-2. 백신",
           items: [
-            { name: "백신 연구개발", laws: { strategic: true, tax_strategic: true, tax_growth: true, advanced: false, protection: false }, note: "조특법-전략 : 방어항원 등 스크리닝 및 제조, 비임상시험 / 국가전략기술 : 감염병 백신치료" },
+            { name: "백신 연구개발 - 발굴", laws: { strategic: true, tax_strategic: true, tax_growth: true, advanced: false, protection: false }, note: "조특법-전략 : 방어항원 등 스크리닝 및 제조, 비임상시험 / 국가전략기술 : 감염병 백신치료" },
+            { name: "백신 연구개발 - 비임상", laws: { strategic: true, tax_strategic: true, tax_growth: false, advanced: false, protection: false }, note: "" },
             { name: "백신 임상평가", laws: { strategic: false, tax_strategic: true, tax_growth: false, advanced: false, protection: false }, note: "조특법-전략 : 백신 1상, 2상, 3상" },
             { name: "백신 생산기반", laws: { strategic: false, tax_strategic: true, tax_growth: false, advanced: false, protection: false }, note: "조특법-전략 : 백신 원료, 원부자재, 생산장비" }
           ]
@@ -338,7 +345,7 @@ const TECH_DATA = {
         {
           name: "9-1. 자율주행",
           items: [
-            { name: "자율주행 AI·SW 플랫폼", laws: { strategic: true, tax_strategic: true, tax_growth: true, advanced: false, protection: true }, note: "국가핵심기술 : 자율주행 핵심부품 시스템(상용화 3년 이내 제어시스템) / 조특법-전략 : 주행상황 인지기반 통합제어, 탑승자 인지 및 인터페이스, 조특법-신성장 : 자율주행 기록 및 사고원인 규명 / 국가전략기술 : 자율주행시스템" },
+            { name: "자율주행 AI·SW 플랫폼", laws: { strategic: true, tax_strategic: true, tax_growth: true, advanced: false, protection: true }, note: "국가전략기술: 레벨 4+ 자율주행 / 조특법-전략: 인지 및 통합제어 / 조특법-신성장: 자율주행 기록 및 사고원인 규명 / 국가핵심기술: 상용화 3년 이내 핵심 부품·시스템" },
             { name: "자율주행 HW플랫폼·센서", laws: { strategic: true, tax_strategic: true, tax_growth: false, advanced: false, protection: true }, note: "국가핵심기술 : 자율주행 핵심부품 시스템(상용화 3년 이내 카메라, 레이더, 라이더, 정밀측위) / 조특법-전략 : 주행상황 인지 센서, 주행지능정보처리 통합시스템" }
           ]
         },
@@ -352,7 +359,7 @@ const TECH_DATA = {
         {
           name: "9-3. 내연기관차",
           items: [
-            { name: "내연기관차", laws: { strategic: false, tax_strategic: false, tax_growth: false, advanced: false, protection: true }, note: "국가핵심기술 : 가솔린 직접분사식 시스템, LPG 직접분사식 시스템, EURO 6 기준 이상 디젤엔진, 자동차 엔진·자동변속기_x000B_(양산 후 2년 이내)" }
+            { name: "내연기관차", laws: { strategic: true, tax_strategic: false, tax_growth: false, advanced: false, protection: true }, note: "국가핵심기술 : 가솔린 직접분사식 시스템, LPG 직접분사식 시스템, EURO 6 기준 이상 디젤엔진, 자동차 엔진·자동변속기\n(양산 후 2년 이내)" }
           ]
         },
         {
@@ -394,9 +401,9 @@ const TECH_DATA = {
     {
       id: 11, name: "조선·해양", icon: "🚢",
       laws: {
-        strategic: "지능정보 / 첨단 소부장 / 탄소중립 등",
-        tax_strategic: "우주항공·해양",
-        tax_growth: "미래형 운송 및 이동수단",
+        strategic: "우주항공·해양",
+        tax_strategic: "미래형 운송 및 이동수단",
+        tax_growth: "지능정보 / 첨단 소부장 / 탄소중립 등",
         advanced: "-",
         protection: "조선"
       },
@@ -437,9 +444,9 @@ const TECH_DATA = {
             { name: "고에너지밀도 리튬이온전지", laws: { strategic: true, tax_strategic: true, tax_growth: true, advanced: true, protection: true }, note: "국가핵심기술 : 265 / 국가첨단전략기술 : 280 / 조특법-전략 : 265 / 국가전략기술 : 350급 이상 목표 (파우치형 기준, Wh/kg)" },
             { name: "리튬이온전지 핵심소재 - 하이니켈 양극재", laws: { strategic: true, tax_strategic: true, tax_growth: false, advanced: true, protection: true }, note: "Ni > 80%" },
             { name: "리튬이온전지 핵심소재 - 음극재, 전극", laws: { strategic: true, tax_strategic: true, tax_growth: true, advanced: true, protection: true }, note: "전극 600mAH/g 이상" },
-            { name: "리튬이온전지 핵심소재 - 분리막, 전해질", laws: { strategic: true, tax_strategic: true, tax_growth: false, advanced: false, protection: false }, note: "" },
-            { name: "리튬이온전지 핵심소재 - 기타 소재", laws: { strategic: true, tax_strategic: true, tax_growth: true, advanced: false, protection: false }, note: "" },
-            { name: "친환경 소재 생산", laws: { strategic: true, tax_strategic: false, tax_growth: false, advanced: false, protection: false }, note: "" }
+            { name: "리튬이온전지 핵심소재 - 분리막, 전해질", laws: { strategic: true, tax_strategic: true, tax_growth: false, advanced: false, protection: false }, note: "-" },
+            { name: "리튬이온전지 핵심소재 - 기타 소재", laws: { strategic: true, tax_strategic: true, tax_growth: true, advanced: false, protection: false }, note: "탄소나노튜브 등 기능성 전극 소재, 도전재 등" },
+            { name: "친환경 소재 생산", laws: { strategic: true, tax_strategic: false, tax_growth: false, advanced: false, protection: false }, note: "-" }
           ]
         },
         {
@@ -449,20 +456,20 @@ const TECH_DATA = {
             { name: "리튬금속전지", laws: { strategic: true, tax_strategic: true, tax_growth: false, advanced: true, protection: true }, note: "국가핵심기술, 국가첨단전략, 조특법-전략 : 600mAh/g 이상 고성능 전극 기준 / 국가전략기술 : 충방전 800회 이상 리튬금속전지" },
             { name: "리튬황전지", laws: { strategic: true, tax_strategic: true, tax_growth: false, advanced: false, protection: true }, note: "국가핵심기술, 국가첨단전략, 조특법-전략 : 600mAh/g 이상 고성능 전극 기준 / 국가전략기술 : 400Wh/kg 이상 리튬황전지 개발목표" },
             { name: "비리튬계 이온전지(나트륨이온전지)", laws: { strategic: true, tax_strategic: false, tax_growth: true, advanced: false, protection: false }, note: "국가전략기술 : 나트륨이온전지 (220Wh/kg 이상 개발 목표)" },
-            { name: "흐름전지", laws: { strategic: false, tax_strategic: false, tax_growth: true, advanced: false, protection: false }, note: "" }
+            { name: "흐름전지", laws: { strategic: false, tax_strategic: false, tax_growth: true, advanced: false, protection: false }, note: "-" }
           ]
         },
         {
           name: "12-3. 모듈-팩·관리시스템",
           items: [
             { name: "이차전지 모듈-팩", laws: { strategic: true, tax_strategic: true, tax_growth: true, advanced: false, protection: false }, note: "조특법 : 160Wh/kg 이상 / 국가전략기술 : 210Wh/kg 이상 개발목표" },
-            { name: "배터리 관리시스템", laws: { strategic: true, tax_strategic: false, tax_growth: false, advanced: false, protection: false }, note: "" }
+            { name: "배터리 관리시스템", laws: { strategic: true, tax_strategic: false, tax_growth: false, advanced: false, protection: false }, note: "배터리 지능형 통합관리, 열폭주 및 화재전이 차단" }
           ]
         },
         {
           name: "12-4. 재사용·재활용",
           items: [
-            { name: "재사용-재활용", laws: { strategic: true, tax_strategic: true, tax_growth: true, advanced: false, protection: false }, note: "조특법-전략 : Li>35%, Co,Ni>90% / 국가전랴긱술 : Li>95%, Co,Ni>99% 이상 개발목표" }
+            { name: "재사용-재활용", laws: { strategic: true, tax_strategic: true, tax_growth: true, advanced: false, protection: false }, note: "조특법-전략 : Li>35%, Co,Ni>90% / 국가전략기술 : Li>95%, Co,Ni>99% 이상 개발목표" }
           ]
         }
       ]
@@ -480,24 +487,24 @@ const TECH_DATA = {
         {
           name: "13-1. 대형 원전",
           items: [
-            { name: "원자로 핵심 소재·부품", laws: { strategic: false, tax_strategic: false, tax_growth: true, advanced: false, protection: true }, note: "국가핵심기술 : 원전 구조물 설계초과지진력 저잠용 고무계열 면진장치" },
-            { name: "원전설계", laws: { strategic: false, tax_strategic: false, tax_growth: true, advanced: false, protection: false }, note: "" },
-            { name: "원전제조", laws: { strategic: false, tax_strategic: false, tax_growth: true, advanced: false, protection: false }, note: "" },
-            { name: "원전운영", laws: { strategic: false, tax_strategic: false, tax_growth: true, advanced: false, protection: false }, note: "" }
+            { name: "원자로 핵심 소재·부품", laws: { strategic: false, tax_strategic: false, tax_growth: true, advanced: false, protection: true }, note: "조특법-신성장: 원자로 냉각재 펌프 등\n국가핵심기술 : 지진력 저감용 고무계열 면진장치" },
+            { name: "원전설계", laws: { strategic: false, tax_strategic: false, tax_growth: true, advanced: false, protection: false }, note: "신형원전, 가압 경수형 원전 설계" },
+            { name: "원전제조", laws: { strategic: false, tax_strategic: false, tax_growth: true, advanced: false, protection: false }, note: "-" },
+            { name: "원전운영", laws: { strategic: false, tax_strategic: false, tax_growth: true, advanced: false, protection: false }, note: "가동원전 계측제어설비 디지털 업그레이드" }
           ]
         },
         {
           name: "13-2. 소형 원자로",
           items: [
-            { name: "경수형 SMR", laws: { strategic: true, tax_strategic: false, tax_growth: true, advanced: false, protection: false }, note: "" },
-            { name: "비경수형 SMR", laws: { strategic: true, tax_strategic: false, tax_growth: true, advanced: false, protection: true }, note: "" },
-            { name: "연구용 원자로", laws: { strategic: false, tax_strategic: false, tax_growth: false, advanced: false, protection: true }, note: "" }
+            { name: "경수형 SMR", laws: { strategic: true, tax_strategic: false, tax_growth: true, advanced: false, protection: false }, note: "-" },
+            { name: "비경수형 SMR", laws: { strategic: true, tax_strategic: false, tax_growth: true, advanced: false, protection: true }, note: "국가전략기술: 고온가스로, 소듐고속냉각고속로, 용융염원자로, 핵연료 생산·시험 / 조특법-신성장: 혁신 공법 / 국가핵심기술: TRISO-SiC 핵연료 기술" },
+            { name: "연구용 원자로", laws: { strategic: false, tax_strategic: false, tax_growth: false, advanced: false, protection: true }, note: "중성자 거울 및 유도관, U-Mo 합급핵연료" }
           ]
         },
         {
           name: "13-3. 후행 핵주기",
           items: [
-            { name: "후행 핵주기 (방폐물 운반·저장·처분·재활용, 원전 해체)", laws: { strategic: true, tax_strategic: false, tax_growth: true, advanced: false, protection: false }, note: "" }
+            { name: "후행 핵주기 (방폐물 운반·저장·처분·재활용, 원전 해체)", laws: { strategic: true, tax_strategic: false, tax_growth: true, advanced: false, protection: false }, note: "-" }
           ]
         },
         {
@@ -521,26 +528,26 @@ const TECH_DATA = {
         {
           name: "14-1. 수소 생산",
           items: [
-            { name: "수전해 수소생산", laws: { strategic: true, tax_strategic: true, tax_growth: true, advanced: false, protection: false }, note: "" },
-            { name: "기타 수소생산", laws: { strategic: false, tax_strategic: true, tax_growth: true, advanced: false, protection: false }, note: "" }
+            { name: "수전해 수소생산", laws: { strategic: true, tax_strategic: true, tax_growth: true, advanced: false, protection: false }, note: "-" },
+            { name: "기타 수소생산", laws: { strategic: false, tax_strategic: true, tax_growth: true, advanced: false, protection: false }, note: "탄소포집 청정수소, 부생수소 생산" }
           ]
         },
         {
           name: "14-2. 수소 저장·운송",
           items: [
-            { name: "기체 수소 저장·운송", laws: { strategic: true, tax_strategic: true, tax_growth: false, advanced: false, protection: false }, note: "" },
-            { name: "액화 수소 저장·운송", laws: { strategic: true, tax_strategic: true, tax_growth: true, advanced: false, protection: false }, note: "" },
-            { name: "기타 수소 저장·운송", laws: { strategic: false, tax_strategic: true, tax_growth: false, advanced: false, protection: false }, note: "" }
+            { name: "기체 수소 저장·운송", laws: { strategic: true, tax_strategic: true, tax_growth: false, advanced: false, protection: false }, note: "-" },
+            { name: "액화 수소 저장·운송", laws: { strategic: true, tax_strategic: true, tax_growth: true, advanced: false, protection: false }, note: "-" },
+            { name: "기타 수소 저장·운송", laws: { strategic: false, tax_strategic: true, tax_growth: false, advanced: false, protection: false }, note: "암모니아, LOHC, 고체수소" }
           ]
         },
         {
           name: "14-3. 수소 활용",
           items: [
-            { name: "연료전지 - 고정용", laws: { strategic: true, tax_strategic: true, tax_growth: true, advanced: false, protection: true }, note: "" },
-            { name: "연료전지 - 모빌리티용", laws: { strategic: false, tax_strategic: true, tax_growth: false, advanced: false, protection: true }, note: "" },
-            { name: "수소·암모니아 발전", laws: { strategic: true, tax_strategic: true, tax_growth: true, advanced: false, protection: true }, note: "" },
-            { name: "수소 활용 제철", laws: { strategic: false, tax_strategic: true, tax_growth: true, advanced: false, protection: false }, note: "" },
-            { name: "기타 수소 활용", laws: { strategic: false, tax_strategic: true, tax_growth: false, advanced: false, protection: false }, note: "" }
+            { name: "연료전지 - 고정용", laws: { strategic: true, tax_strategic: true, tax_growth: true, advanced: false, protection: true }, note: "발전용" },
+            { name: "연료전지 - 모빌리티용", laws: { strategic: false, tax_strategic: true, tax_growth: false, advanced: false, protection: true }, note: "수소차용, 건설-산업기계용" },
+            { name: "수소·암모니아 발전", laws: { strategic: true, tax_strategic: true, tax_growth: true, advanced: false, protection: true }, note: "-" },
+            { name: "수소 활용 제철", laws: { strategic: false, tax_strategic: true, tax_growth: true, advanced: false, protection: false }, note: "조특법-전략: 수소환원제철 / 조특법-신성장: 함수소가스 활용, 탄소연료 대체" },
+            { name: "기타 수소 활용", laws: { strategic: false, tax_strategic: true, tax_growth: false, advanced: false, protection: false }, note: "수소 처리 바이오에너지 생산" }
           ]
         }
       ]
@@ -558,30 +565,30 @@ const TECH_DATA = {
         {
           name: "15-1. 재생에너지",
           items: [
-            { name: "태양광", laws: { strategic: false, tax_strategic: false, tax_growth: true, advanced: false, protection: false }, note: "" },
-            { name: "풍력", laws: { strategic: false, tax_strategic: false, tax_growth: true, advanced: false, protection: false }, note: "" },
-            { name: "기타 재생에너지", laws: { strategic: false, tax_strategic: false, tax_growth: true, advanced: false, protection: false }, note: "" }
+            { name: "태양광", laws: { strategic: false, tax_strategic: false, tax_growth: true, advanced: false, protection: false }, note: "페로브스카이트 등 탠덤, n형 모듈, 저탄소 모듈" },
+            { name: "풍력", laws: { strategic: false, tax_strategic: false, tax_growth: true, advanced: false, protection: false }, note: "회전 동력 증속기, 발전기, 변환기, 블레이드, 해저케이블" },
+            { name: "기타 재생에너지", laws: { strategic: false, tax_strategic: false, tax_growth: true, advanced: false, protection: false }, note: "지열, 바이오매스, 폐기물 액화·가스화, 폐열" }
           ]
         },
         {
           name: "15-2. 발전·전력망·에너지효율화",
           items: [
-            { name: "발전시스템", laws: { strategic: false, tax_strategic: false, tax_growth: true, advanced: false, protection: false }, note: "" },
-            { name: "전력망", laws: { strategic: false, tax_strategic: false, tax_growth: true, advanced: false, protection: true }, note: "" },
-            { name: "에너지 효율향상", laws: { strategic: false, tax_strategic: false, tax_growth: true, advanced: false, protection: true }, note: "" }
+            { name: "발전시스템", laws: { strategic: false, tax_strategic: false, tax_growth: true, advanced: false, protection: false }, note: "대형가스터빈, 초임계 이산화탄소, 증기터빈" },
+            { name: "전력망", laws: { strategic: false, tax_strategic: false, tax_growth: true, advanced: false, protection: true }, note: "조특법-신성장: 지능형 전력·배전 계통, EMS / 국가핵심기술: 전력케이블" },
+            { name: "에너지 효율향상", laws: { strategic: false, tax_strategic: false, tax_growth: true, advanced: false, protection: true }, note: "건축물·데이터센터 등 에너지 효율, 히트펌프 등" }
           ]
         },
         {
           name: "15-3. 온실가스 감축 기술",
           items: [
-            { name: "탄소 포집·활용·저장", laws: { strategic: false, tax_strategic: false, tax_growth: true, advanced: false, protection: false }, note: "" },
-            { name: "산업공정 연·원료 대체", laws: { strategic: false, tax_strategic: false, tax_growth: true, advanced: false, protection: false }, note: "" }
+            { name: "탄소 포집·활용·저장", laws: { strategic: false, tax_strategic: false, tax_growth: true, advanced: false, protection: false }, note: "-" },
+            { name: "산업공정 연·원료 대체", laws: { strategic: false, tax_strategic: false, tax_growth: true, advanced: false, protection: false }, note: "시멘트·고분자대체물, 반도체·디스플레이 대체 소재" }
           ]
         },
         {
           name: "15-4. 오염저감·자원순환",
           items: [
-            { name: "오염저감·자원순환", laws: { strategic: false, tax_strategic: false, tax_growth: true, advanced: false, protection: true }, note: "" }
+            { name: "오염저감·자원순환", laws: { strategic: false, tax_strategic: false, tax_growth: true, advanced: false, protection: true }, note: "배기가스 오염물 제거, 폐플라스틱 저감 및 재활용, 폐수 재이용 등" }
           ]
         }
       ]
@@ -599,30 +606,36 @@ const TECH_DATA = {
         {
           name: "16-1. 화학·고분자·섬유 소재",
           items: [
-            { name: "고기능 섬유", laws: { strategic: false, tax_strategic: false, tax_growth: true, advanced: false, protection: false }, note: "" },
-            { name: "하이퍼 플라스틱", laws: { strategic: false, tax_strategic: false, tax_growth: true, advanced: false, protection: false }, note: "" },
-            { name: "기능성 탄성소재", laws: { strategic: false, tax_strategic: false, tax_growth: true, advanced: false, protection: false }, note: "" },
-            { name: "정밀화학 소재", laws: { strategic: false, tax_strategic: false, tax_growth: true, advanced: false, protection: false }, note: "" },
-            { name: "탄소 소재", laws: { strategic: false, tax_strategic: false, tax_growth: true, advanced: false, protection: false }, note: "" }
+            { name: "고기능 섬유", laws: { strategic: false, tax_strategic: false, tax_growth: true, advanced: false, protection: false }, note: "극한성능·친환경 섬유, 전기전자용·의료용 섬유 등" },
+            { name: "하이퍼 플라스틱", laws: { strategic: false, tax_strategic: false, tax_growth: true, advanced: false, protection: false }, note: "고강성 하이퍼플라스틱 복합필터" },
+            { name: "기능성 탄성소재", laws: { strategic: false, tax_strategic: false, tax_growth: true, advanced: false, protection: false }, note: "불소계 실리콘 및 고무" },
+            { name: "정밀화학 소재", laws: { strategic: false, tax_strategic: false, tax_growth: true, advanced: false, protection: false }, note: "특수계면활성제, 비극성계 및 에폭시수지 접착소재" },
+            { name: "탄소 소재", laws: { strategic: false, tax_strategic: false, tax_growth: true, advanced: false, protection: false }, note: "고기능성 인조흑연, 그래핀 기반 복합소재" }
           ]
         },
         {
           name: "16-2. 금속·세라믹 소재",
           items: [
-            { name: "금속 소재", laws: { strategic: false, tax_strategic: false, tax_growth: true, advanced: false, protection: true }, note: "" },
-            { name: "세라믹 소재", laws: { strategic: false, tax_strategic: false, tax_growth: true, advanced: false, protection: false }, note: "" }
+            { name: "금속 소재", laws: { strategic: false, tax_strategic: false, tax_growth: true, advanced: false, protection: true }, note: "알루미늄·니켈·마그네슘·구리 등, 중희토 저감 고기능 영구자석 등" },
+            { name: "세라믹 소재", laws: { strategic: false, tax_strategic: false, tax_growth: true, advanced: false, protection: false }, note: "고순도 산화 알루미늄, 압전결정소자, 초음파 트랜스듀서" }
           ]
         },
         {
           name: "16-3. 철강",
           items: [
-            { name: "철강", laws: { strategic: false, tax_strategic: false, tax_growth: true, advanced: false, protection: true }, note: "" }
+            { name: "철강", laws: { strategic: false, tax_strategic: false, tax_growth: true, advanced: false, protection: true }, note: "강관·봉강·H형강·판재 등, 전기로·철스크랩 등 공정" }
           ]
         },
         {
           name: "16-4. 기반 부품",
           items: [
-            { name: "기반 부품", laws: { strategic: false, tax_strategic: false, tax_growth: true, advanced: false, protection: false }, note: "" }
+            { name: "기반 부품", laws: { strategic: false, tax_strategic: false, tax_growth: true, advanced: false, protection: false }, note: "고정밀 베어링, 고압 컨트롤 밸브, 고성능 터보식 펌프, 특수 렌즈 등" }
+          ]
+        },
+        {
+          name: "16-5. (기타 관련 기술)",
+          items: [
+            { name: "(기타: 3d프린팅, 착용형 기기)", laws: { strategic: false, tax_strategic: false, tax_growth: true, advanced: false, protection: false }, note: "-" }
           ]
         }
       ]
@@ -640,7 +653,7 @@ const TECH_DATA = {
         {
           name: "17. 기계·장비",
           items: [
-            { name: "기계·장비", laws: { strategic: false, tax_strategic: false, tax_growth: true, advanced: false, protection: true }, note: "" }
+            { name: "기계·장비", laws: { strategic: false, tax_strategic: false, tax_growth: true, advanced: false, protection: true }, note: "머시닝센터·터닝센터·연삭가공기 등 공작기계, 국가핵심기술은 중대형굴착기·초고속승강기 등 포함" }
           ]
         }
       ]
@@ -658,7 +671,7 @@ const TECH_DATA = {
         {
           name: "18. 방위산업",
           items: [
-            { name: "방산", laws: { strategic: true, tax_strategic: false, tax_growth: true, advanced: true, protection: true }, note: "" }
+            { name: "방산", laws: { strategic: true, tax_strategic: false, tax_growth: true, advanced: true, protection: true }, note: "항공기 등 추진체계, 군사위성, 유무인 복합체계, 통합형 작전용 첨단 디지털 의류 등" }
           ]
         }
       ]
@@ -676,13 +689,13 @@ const TECH_DATA = {
         {
           name: "19-1. 공간컴퓨팅 (실감형 콘텐츠)",
           items: [
-            { name: "공간컴퓨팅 (실감형 콘텐츠)", laws: { strategic: false, tax_strategic: false, tax_growth: true, advanced: false, protection: false }, note: "" }
+            { name: "공간컴퓨팅 (실감형 콘텐츠)", laws: { strategic: false, tax_strategic: false, tax_growth: true, advanced: false, protection: false }, note: "AR, VR, 오감체험형, 디지털 홀로그램 콘텐츠" }
           ]
         },
         {
           name: "19-2. 문화 콘텐츠",
           items: [
-            { name: "게임·영화·방송·애니메이션·웹툰 콘텐츠", laws: { strategic: false, tax_strategic: false, tax_growth: true, advanced: false, protection: false }, note: "" }
+            { name: "게임·영화·방송·애니메이션·웹툰 콘텐츠", laws: { strategic: false, tax_strategic: false, tax_growth: true, advanced: false, protection: false }, note: "-" }
           ]
         }
       ]

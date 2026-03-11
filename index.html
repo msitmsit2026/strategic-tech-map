@@ -588,7 +588,7 @@
       white-space: nowrap;
     }
 
-    .matrix-table th.law-th { font-size: 11px; writing-mode: vertical-rl; min-width: 40px; padding: 14px 8px; }
+    .matrix-table th.law-th { font-size: 11px; writing-mode: horizontal-tb; min-width: 80px; padding: 10px 8px; text-align: center; white-space: nowrap; }
     .matrix-table th:nth-child(2) { color: var(--law-a-text); }
     .matrix-table th:nth-child(3) { color: var(--law-b-text); }
     .matrix-table th:nth-child(4) { color: var(--law-c-text); }
@@ -982,7 +982,7 @@ let state = {
 
 const LAW_KEYS = ['strategic','tax_strategic','tax_growth','advanced','protection'];
 const LAW_CLASSES = { strategic:'a', tax_strategic:'b', tax_growth:'c', advanced:'d', protection:'e' };
-const LAW_SHORT = { strategic:'전략육성법', tax_strategic:'조특-전략', tax_growth:'조특-신성장', advanced:'첨단전략산업법', protection:'산업기술보호법' };
+const LAW_SHORT = { strategic:'전략기술육성법', tax_strategic:'조특-전략', tax_growth:'조특-신성장', advanced:'첨단전략산업법', protection:'산업기술보호법' };
 
 // Count total techs
 function countTechs() {
