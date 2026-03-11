@@ -817,17 +817,28 @@
       .tech-laws {
         width: 100%;
         display: flex;
-        flex-wrap: wrap;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
         gap: 4px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        margin-top: 6px;
       }
 
-      /* Law pills: auto-size to fit text, no overlap */
+      /* Law pills: auto-size, single row, no wrap */
       .tl-pill {
         width: auto;
-        min-width: 0;
-        padding: 3px 6px;
+        min-width: fit-content;
+        padding: 4px 8px;
         font-size: 8px;
         flex-shrink: 0;
+        white-space: nowrap;
+      }
+
+      /* Hide empty placeholder pills on mobile */
+      .tl-pill.tl-empty {
+        display: none;
       }
 
       /* Specs accordion: full width, no spacer */
@@ -1678,12 +1689,22 @@ function renderSearch(main, rcDiv) {
 
 // ─── SPECS ACCORDION ───
 function toggleSpecsAccordion(row, item) {
+  const isMobile = window.innerWidth <= 768;
+
   // If this row already has an open accordion, close it (toggle)
   const existing = row.nextElementSibling;
   if (existing && existing.classList.contains('specs-accordion')) {
     existing.classList.remove('open');
     setTimeout(() => existing.remove(), 350);
     return;
+  }
+
+  // Mobile: close all other open accordions first (single expand)
+  if (isMobile) {
+    document.querySelectorAll('.specs-accordion.open').forEach(acc => {
+      acc.classList.remove('open');
+      setTimeout(() => acc.remove(), 350);
+    });
   }
 
   // Build accordion panel
