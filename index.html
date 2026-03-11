@@ -910,7 +910,7 @@
     </div>
     <div class="hstat">
       <div class="hstat-num" id="h-techs">—</div>
-      <div class="hstat-label">세부기술</div>
+      <div class="hstat-label">세부기술(범주)</div>
     </div>
   </div>
   <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()">☀️ 라이트 모드</button>
@@ -1444,7 +1444,8 @@ function renderSearch(main, rcDiv) {
         if (!techMatchesFilter(item)) return;
         const nameL = item.name.toLowerCase();
         const ssL = ss.name.toLowerCase();
-        if (keywords.some(kw => nameL.includes(kw) || ssL.includes(kw))) {
+        const noteL = (item.note || '').toLowerCase();
+        if (keywords.some(kw => nameL.includes(kw) || ssL.includes(kw) || noteL.includes(kw))) {
           results.push({ sector: s, subsector: ss, item });
         }
       });
