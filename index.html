@@ -540,9 +540,11 @@
     }
 
     .tech-laws {
-      display: flex;
+      display: grid;
+      grid-template-columns: repeat(5, auto);
       gap: 4px;
       flex-shrink: 0;
+      justify-content: end;
     }
 
     .tl-pill {
@@ -552,6 +554,11 @@
       border: 1px solid;
       font-weight: 700;
       white-space: nowrap;
+      text-align: center;
+    }
+
+    .tl-pill.tl-empty {
+      visibility: hidden;
     }
 
     .tl-a { background: var(--law-a-bg); border-color: var(--law-a); color: var(--law-a-text); }
@@ -1190,9 +1197,12 @@ function renderDetail(main, rcDiv) {
     visibleItems.forEach(item => {
       const row = document.createElement('div');
       row.className = 'tech-row';
-      const pills = LAW_KEYS.filter(k => item.laws[k] && state.activeLaws.has(k)).map(k =>
-        `<span class="tl-pill tl-${LAW_CLASSES[k]}">${LAW_SHORT[k]}</span>`
-      ).join('');
+      const pills = LAW_KEYS.map(k => {
+        const active = item.laws[k] && state.activeLaws.has(k);
+        return active
+          ? `<span class="tl-pill tl-${LAW_CLASSES[k]}">${LAW_SHORT[k]}</span>`
+          : `<span class="tl-pill tl-empty">${LAW_SHORT[k]}</span>`;
+      }).join('');
       row.innerHTML = `
         <div class="tech-name">${item.name}</div>
         <div class="tech-laws">${pills}</div>
@@ -1361,9 +1371,12 @@ function renderSearch(main, rcDiv) {
   const html = results.map(r => {
     const hlPattern = keywords.map(k => k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|');
     const highlight = (s) => s.replace(new RegExp(`(${hlPattern})`, 'gi'), '<mark>$1</mark>');
-    const pills = LAW_KEYS.filter(k => r.item.laws[k] && state.activeLaws.has(k)).map(k =>
-      `<span class="tl-pill tl-${LAW_CLASSES[k]}">${LAW_SHORT[k]}</span>`
-    ).join('');
+    const pills = LAW_KEYS.map(k => {
+      const active = r.item.laws[k] && state.activeLaws.has(k);
+      return active
+        ? `<span class="tl-pill tl-${LAW_CLASSES[k]}">${LAW_SHORT[k]}</span>`
+        : `<span class="tl-pill tl-empty">${LAW_SHORT[k]}</span>`;
+    }).join('');
     return `
       <div class="search-result-item" onclick="pushHistoryState();state.activeSector=${r.sector.id};state.searchQuery='';document.getElementById('search-input').value='';state.view='overview';buildSectorNav();render()">
         <div class="sri-sector">${r.sector.icon} ${r.sector.name}</div>
