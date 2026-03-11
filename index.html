@@ -918,15 +918,25 @@
       .sector-header-info { min-width: 0; width: 100%; }
       .sector-header-name { font-size: 18px; }
 
-      /* Sector header law grid: wrap on mobile, no left padding */
+      /* Sector header law grid: revert to grid 2-col left-aligned on mobile */
       .sector-law-grid {
-        padding-left: 0;
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
         gap: 6px;
+        padding: 0;
+        margin-top: 0;
+        font-size: 11px;
       }
       .sector-law-grid-item {
-        flex: 1 1 calc(50% - 6px);
-        min-width: calc(50% - 6px);
+        flex: unset;
+        text-align: left;
+        min-width: unset;
+      }
+      .sector-law-grid-item .law-name {
+        text-align: left;
+      }
+      .sector-law-grid-item .law-scope {
+        text-align: left;
       }
 
       /* Control bar */
