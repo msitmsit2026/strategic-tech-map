@@ -238,9 +238,9 @@ const TECH_DATA = {
       ]
     },
     {
-      id: 7, name: "첨단바이오", icon: "🧬",
+      id: 7, name: "바이오", icon: "🧬",
       laws: {
-        strategic: "첨단바이오",
+        strategic: "바이오",
         tax_strategic: "바이오의약품 / 백신",
         tax_growth: "바이오·헬스",
         advanced: "바이오",
@@ -298,9 +298,9 @@ const TECH_DATA = {
       ]
     },
     {
-      id: 8, name: "첨단로봇·제조", icon: "🦾",
+      id: 8, name: "로봇", icon: "🦾",
       laws: {
-        strategic: "첨단로봇·제조",
+        strategic: "로봇",
         tax_strategic: "-",
         tax_growth: "로봇 / 지능정보",
         advanced: "로봇",
@@ -594,7 +594,7 @@ const TECH_DATA = {
       ]
     },
     {
-      id: 16, name: "융복합 소재·부품", icon: "⚙️",
+      id: 16, name: "소재·부품", icon: "⚙️",
       laws: {
         strategic: "-",
         tax_strategic: "-",
