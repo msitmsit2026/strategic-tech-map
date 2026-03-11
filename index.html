@@ -964,35 +964,50 @@
       }
 
       /* Matrix table: fixed layout to fit mobile screen */
+      /* 7 columns: 분야(20%) + 법령5개(5×13%=65%) + 세부기술(15%) = 100% */
       .matrix-table {
         min-width: 0 !important;
         width: 100% !important;
         table-layout: fixed;
         font-size: 10px;
       }
-      .matrix-table th {
-        padding: 3px 2px;
+      .matrix-table th,
+      .matrix-table td {
+        padding: 2px 1px;
         font-size: 10px;
+      }
+      .matrix-table th {
         white-space: normal;
         word-break: keep-all;
       }
       .matrix-table th:first-child {
-        width: 22%;
+        width: 20%;
         text-align: left;
       }
       .matrix-table th.law-th {
-        width: 15.6%;
-        font-size: 10px;
+        width: 13%;
+        font-size: 9px;
         min-width: 0;
-        padding: 4px 2px;
+        padding: 2px 1px;
         writing-mode: vertical-rl;
         text-orientation: mixed;
         white-space: nowrap;
-        max-height: 80px;
-        overflow: hidden;
+        min-height: 60px;
+        overflow: visible;
       }
-      .matrix-table td {
-        padding: 3px 2px;
+      /* 세부기술 열 (7번째, 마지막) */
+      .matrix-table th:last-child {
+        width: 15%;
+        text-align: center;
+        font-size: 9px;
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+        white-space: nowrap;
+        min-height: 60px;
+      }
+      .matrix-table td:last-child {
+        width: 15%;
+        text-align: center;
         font-size: 10px;
       }
       .matrix-table .sector-td {
@@ -1000,9 +1015,6 @@
         white-space: normal;
         word-break: keep-all;
         line-height: 1.3;
-      }
-      .matrix-table .sector-td {
-        font-size: 10px;
       }
       .matrix-cell-yes .check-icon {
         width: 16px;
