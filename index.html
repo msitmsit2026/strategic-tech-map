@@ -27,6 +27,60 @@
       --law-c-bg: #064e3b22;
       --law-d-bg: #7f1d1d22;
       --law-e-bg: #1f293722;
+      /* law text colors (light tint for dark bg) */
+      --law-a-text: #93c5fd;
+      --law-b-text: #c4b5fd;
+      --law-c-text: #6ee7b7;
+      --law-d-text: #fca5a5;
+      --law-e-text: #9ca3af;
+      /* header gradient */
+      --header-bg: linear-gradient(135deg, #0a0f1e 0%, #0f172a 50%, #0a1628 100%);
+      /* inactive / misc */
+      --inactive-border: #1e293b;
+      --inactive-color: #475569;
+      --card-shadow: #38bdf81a;
+      --dot-off: #1e293b;
+      --check-no: #1e293b;
+      --mark-bg: #38bdf833;
+      --bubble-text: #fff;
+      --scrollbar-thumb: #1e3a5f;
+      --bar-fill-text: rgba(0,0,0,0.7);
+    }
+
+    [data-theme="light"] {
+      --bg: #f1f5f9;
+      --bg2: #ffffff;
+      --bg3: #e2e8f0;
+      --border: #cbd5e1;
+      --accent: #2563eb;
+      --accent2: #7c3aed;
+      --text: #1e293b;
+      --text-dim: #64748b;
+      --law-a: #2563eb;
+      --law-b: #7c3aed;
+      --law-c: #059669;
+      --law-d: #dc2626;
+      --law-e: #4b5563;
+      --law-a-bg: #dbeafe;
+      --law-b-bg: #ede9fe;
+      --law-c-bg: #d1fae5;
+      --law-d-bg: #fee2e2;
+      --law-e-bg: #f3f4f6;
+      --law-a-text: #1d4ed8;
+      --law-b-text: #6d28d9;
+      --law-c-text: #047857;
+      --law-d-text: #b91c1c;
+      --law-e-text: #4b5563;
+      --header-bg: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f1f5f9 100%);
+      --inactive-border: #e2e8f0;
+      --inactive-color: #94a3b8;
+      --card-shadow: #2563eb1a;
+      --dot-off: #e2e8f0;
+      --check-no: #e2e8f0;
+      --mark-bg: #2563eb22;
+      --bubble-text: #fff;
+      --scrollbar-thumb: #94a3b8;
+      --bar-fill-text: rgba(255,255,255,0.9);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -40,7 +94,7 @@
 
     /* ─── HEADER ─── */
     header {
-      background: linear-gradient(135deg, #0a0f1e 0%, #0f172a 50%, #0a1628 100%);
+      background: var(--header-bg);
       border-bottom: 1px solid var(--border);
       padding: 20px 32px;
       position: sticky;
@@ -152,7 +206,7 @@
     }
 
     .view-btn:hover { border-color: var(--accent); color: var(--accent); }
-    .view-btn.active { background: var(--accent); border-color: var(--accent); color: #000; font-weight: 700; }
+    .view-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 700; }
 
     /* Law filters */
     .law-filter {
@@ -175,12 +229,12 @@
 
     .law-chip:hover { opacity: 0.85; }
 
-    .law-chip.active-a { background: var(--law-a-bg); border-color: var(--law-a); color: #93c5fd; }
-    .law-chip.active-b { background: var(--law-b-bg); border-color: var(--law-b); color: #c4b5fd; }
-    .law-chip.active-c { background: var(--law-c-bg); border-color: var(--law-c); color: #6ee7b7; }
-    .law-chip.active-d { background: var(--law-d-bg); border-color: var(--law-d); color: #fca5a5; }
-    .law-chip.active-e { background: var(--law-e-bg); border-color: var(--law-e); color: #9ca3af; }
-    .law-chip.inactive { background: transparent; border-color: #1e293b; color: #475569; }
+    .law-chip.active-a { background: var(--law-a-bg); border-color: var(--law-a); color: var(--law-a-text); }
+    .law-chip.active-b { background: var(--law-b-bg); border-color: var(--law-b); color: var(--law-b-text); }
+    .law-chip.active-c { background: var(--law-c-bg); border-color: var(--law-c); color: var(--law-c-text); }
+    .law-chip.active-d { background: var(--law-d-bg); border-color: var(--law-d); color: var(--law-d-text); }
+    .law-chip.active-e { background: var(--law-e-bg); border-color: var(--law-e); color: var(--law-e-text); }
+    .law-chip.inactive { background: transparent; border-color: var(--inactive-border); color: var(--inactive-color); }
 
     .law-dot {
       width: 10px; height: 10px;
@@ -212,7 +266,7 @@
     }
 
     .sector-item:hover { background: var(--bg3); color: var(--text); }
-    .sector-item.active { background: #1e3a5f33; border-color: var(--accent); color: var(--accent); }
+    .sector-item.active { background: var(--law-a-bg); border-color: var(--accent); color: var(--accent); }
 
     .sector-icon { font-size: 14px; width: 20px; text-align: center; }
 
@@ -290,11 +344,11 @@
       cursor: pointer;
     }
 
-    .tag-a { background: var(--law-a-bg); border-color: var(--law-a); color: #93c5fd; }
-    .tag-b { background: var(--law-b-bg); border-color: var(--law-b); color: #c4b5fd; }
-    .tag-c { background: var(--law-c-bg); border-color: var(--law-c); color: #6ee7b7; }
-    .tag-d { background: var(--law-d-bg); border-color: var(--law-d); color: #fca5a5; }
-    .tag-e { background: var(--law-e-bg); border-color: var(--law-e); color: #9ca3af; }
+    .tag-a { background: var(--law-a-bg); border-color: var(--law-a); color: var(--law-a-text); }
+    .tag-b { background: var(--law-b-bg); border-color: var(--law-b); color: var(--law-b-text); }
+    .tag-c { background: var(--law-c-bg); border-color: var(--law-c); color: var(--law-c-text); }
+    .tag-d { background: var(--law-d-bg); border-color: var(--law-d); color: var(--law-d-text); }
+    .tag-e { background: var(--law-e-bg); border-color: var(--law-e); color: var(--law-e-text); }
 
     /* ─── MAIN CONTENT ─── */
     main {
@@ -333,7 +387,7 @@
     .sector-card:hover {
       border-color: var(--accent);
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px #38bdf81a;
+      box-shadow: 0 8px 24px var(--card-shadow);
     }
 
     .sector-card:hover::before { opacity: 1; }
@@ -370,7 +424,7 @@
     .card-dot.on-c { background: var(--law-c); }
     .card-dot.on-d { background: var(--law-d); }
     .card-dot.on-e { background: var(--law-e); }
-    .card-dot.off { background: #1e293b; }
+    .card-dot.off { background: var(--dot-off); }
 
     .card-sub-count {
       font-size: 11px;
@@ -494,11 +548,11 @@
       white-space: nowrap;
     }
 
-    .tl-a { background: var(--law-a-bg); border-color: var(--law-a); color: #93c5fd; }
-    .tl-b { background: var(--law-b-bg); border-color: var(--law-b); color: #c4b5fd; }
-    .tl-c { background: var(--law-c-bg); border-color: var(--law-c); color: #6ee7b7; }
-    .tl-d { background: var(--law-d-bg); border-color: var(--law-d); color: #fca5a5; }
-    .tl-e { background: var(--law-e-bg); border-color: var(--law-e); color: #9ca3af; }
+    .tl-a { background: var(--law-a-bg); border-color: var(--law-a); color: var(--law-a-text); }
+    .tl-b { background: var(--law-b-bg); border-color: var(--law-b); color: var(--law-b-text); }
+    .tl-c { background: var(--law-c-bg); border-color: var(--law-c); color: var(--law-c-text); }
+    .tl-d { background: var(--law-d-bg); border-color: var(--law-d); color: var(--law-d-text); }
+    .tl-e { background: var(--law-e-bg); border-color: var(--law-e); color: var(--law-e-text); }
 
     /* ─── MATRIX VIEW ─── */
     .matrix-wrap {
@@ -522,11 +576,11 @@
     }
 
     .matrix-table th.law-th { font-size: 11px; writing-mode: vertical-rl; min-width: 40px; padding: 14px 8px; }
-    .matrix-table th:nth-child(2) { color: #93c5fd; }
-    .matrix-table th:nth-child(3) { color: #c4b5fd; }
-    .matrix-table th:nth-child(4) { color: #6ee7b7; }
-    .matrix-table th:nth-child(5) { color: #fca5a5; }
-    .matrix-table th:nth-child(6) { color: #9ca3af; }
+    .matrix-table th:nth-child(2) { color: var(--law-a-text); }
+    .matrix-table th:nth-child(3) { color: var(--law-b-text); }
+    .matrix-table th:nth-child(4) { color: var(--law-c-text); }
+    .matrix-table th:nth-child(5) { color: var(--law-d-text); }
+    .matrix-table th:nth-child(6) { color: var(--law-e-text); }
 
     .matrix-table td {
       padding: 9px 14px;
@@ -560,7 +614,7 @@
     .check-c { background: var(--law-c-bg); color: var(--law-c); border: 1px solid var(--law-c); }
     .check-d { background: var(--law-d-bg); color: var(--law-d); border: 1px solid var(--law-d); }
     .check-e { background: var(--law-e-bg); color: var(--law-e); border: 1px solid var(--law-e); }
-    .check-no { color: #1e293b; font-size: 14px; }
+    .check-no { color: var(--check-no); font-size: 14px; }
 
     /* ─── SEARCH RESULTS ─── */
     .search-results { display: flex; flex-direction: column; gap: 8px; }
@@ -591,7 +645,7 @@
     }
 
     mark {
-      background: #38bdf833;
+      background: var(--mark-bg);
       color: var(--accent);
       border-radius: 2px;
     }
@@ -655,7 +709,7 @@
       padding-right: 6px;
       font-size: 10px;
       font-family: 'JetBrains Mono', monospace;
-      color: rgba(0,0,0,0.7);
+      color: var(--bar-fill-text);
       font-weight: 700;
     }
 
@@ -690,7 +744,7 @@
       font-size: 10px;
       font-weight: 700;
       font-family: 'JetBrains Mono', monospace;
-      color: #fff;
+      color: var(--bubble-text);
       border: 2px solid;
     }
 
@@ -712,7 +766,7 @@
     /* scrollbar */
     ::-webkit-scrollbar { width: 6px; height: 6px; }
     ::-webkit-scrollbar-track { background: transparent; }
-    ::-webkit-scrollbar-thumb { background: #1e3a5f; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 3px; }
     ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 
     .empty-state {
@@ -723,6 +777,25 @@
 
     .empty-state-icon { font-size: 48px; margin-bottom: 12px; opacity: 0.4; }
     .empty-state-text { font-size: 14px; }
+
+    /* Theme toggle */
+    .theme-toggle {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+      padding: 6px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 12px;
+      font-family: 'Noto Sans KR', sans-serif;
+      transition: all 0.2s;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+    .theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
 
     /* Highlight filter dim */
     .tech-row.dimmed { opacity: 0.25; }
@@ -750,6 +823,7 @@
       <div class="hstat-label">세부기술</div>
     </div>
   </div>
+  <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()">☀️ 라이트 모드</button>
 </header>
 
 <div class="app">
@@ -843,15 +917,69 @@ function sectorMatchesFilter(sector) {
   return sector.subsectors.some(ss => ss.items.some(item => techMatchesFilter(item)));
 }
 
+// ─── HISTORY API ───
+let _skipPush = false;
+
+function getStateSnapshot() {
+  return {
+    view: state.view,
+    activeSector: state.activeSector,
+    searchQuery: state.searchQuery,
+    activeLaws: [...state.activeLaws]
+  };
+}
+
+function restoreStateFromSnapshot(snap) {
+  if (!snap) return;
+  state.view = snap.view || 'overview';
+  state.activeSector = snap.activeSector || null;
+  state.searchQuery = snap.searchQuery || '';
+  if (snap.activeLaws) {
+    state.activeLaws = new Set(snap.activeLaws);
+  }
+  document.getElementById('search-input').value = state.searchQuery;
+  document.querySelectorAll('.view-btn').forEach((b, i) => {
+    b.classList.toggle('active', ['overview','matrix','stats'][i] === state.view);
+  });
+  buildLawFilters();
+  buildSectorNav();
+  render();
+}
+
+function pushHistoryState() {
+  if (_skipPush) return;
+  history.pushState(getStateSnapshot(), '');
+}
+
+window.addEventListener('popstate', function(e) {
+  _skipPush = true;
+  restoreStateFromSnapshot(e.state);
+  _skipPush = false;
+});
+
 // ─── INIT ───
 function init() {
   document.getElementById('h-techs').textContent = countTechs();
   buildLawFilters();
   buildSectorNav();
+
+  // Register initial state
+  history.replaceState(getStateSnapshot(), '');
+
+  // Strip stale hash on fresh load
+  if (location.hash) history.replaceState(getStateSnapshot(), '', location.pathname + location.search);
+
   render();
 
+  let _searchPushed = false;
   document.getElementById('search-input').addEventListener('input', (e) => {
-    state.searchQuery = e.target.value.trim();
+    const val = e.target.value.trim();
+    if (val.length >= 1 && !_searchPushed) {
+      pushHistoryState();
+      _searchPushed = true;
+    }
+    if (val.length === 0) _searchPushed = false;
+    state.searchQuery = val;
     render();
   });
 }
@@ -905,6 +1033,7 @@ function buildSectorNav() {
     `;
     el.style.opacity = visible ? '1' : '0.3';
     el.onclick = () => {
+      pushHistoryState();
       if (state.activeSector === s.id) {
         state.activeSector = null;
       } else {
@@ -921,6 +1050,7 @@ function buildSectorNav() {
 }
 
 function setView(v) {
+  pushHistoryState();
   state.view = v;
   state.activeSector = null;
   state.searchQuery = '';
@@ -995,6 +1125,7 @@ function renderOverview(main, rcDiv) {
       <div class="card-coverage">${coverage.size}/5 법령 적용</div>
     `;
     card.onclick = () => {
+      pushHistoryState();
       state.activeSector = s.id;
       buildSectorNav();
       render();
@@ -1030,7 +1161,7 @@ function renderDetail(main, rcDiv) {
             }).join('')}
           </div>
         </div>
-        <button class="back-btn" onclick="state.activeSector=null;buildSectorNav();render()">← 목록</button>
+        <button class="back-btn" onclick="history.back()">← 목록</button>
       </div>
       <div id="subsectors-container"></div>
     </div>
@@ -1085,7 +1216,7 @@ function renderMatrix(main, rcDiv) {
     }).join('');
     const cnt = s.subsectors.reduce((a, ss) => a + ss.items.filter(i => techMatchesFilter(i)).length, 0);
     rows += `
-      <tr style="cursor:pointer" onclick="state.activeSector=${s.id};state.view='overview';buildSectorNav();render()">
+      <tr style="cursor:pointer" onclick="pushHistoryState();state.activeSector=${s.id};state.view='overview';buildSectorNav();render()">
         <td class="sector-td">${s.icon} ${s.name}</td>
         ${cells}
         <td style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent);text-align:center">${cnt}</td>
@@ -1158,7 +1289,7 @@ function renderStats(main, rcDiv) {
   const bubbles = sectorCoverage.map(s => {
     const size = 24 + (s.techCount / maxTech) * 40;
     return `
-      <div class="bubble" onclick="state.activeSector=${s.id};state.view='overview';buildSectorNav();render()" title="${s.name}: ${s.techCount}개 세부기술, ${s.lawCount}개 법령">
+      <div class="bubble" onclick="pushHistoryState();state.activeSector=${s.id};state.view='overview';buildSectorNav();render()" title="${s.name}: ${s.techCount}개 세부기술, ${s.lawCount}개 법령">
         <div class="bubble-circle" style="width:${size}px;height:${size}px;border-color:${getLawColor(LAW_KEYS[s.lawCount-1]||'strategic')};background:${getLawColor(LAW_KEYS[s.lawCount-1]||'strategic')}22">${s.techCount}</div>
         <div class="bubble-name">${s.icon} ${s.name}</div>
       </div>
@@ -1199,12 +1330,15 @@ function renderStats(main, rcDiv) {
 
 function renderSearch(main, rcDiv) {
   const q = state.searchQuery.toLowerCase();
+  const keywords = q.split(/\s+/).filter(k => k.length > 0);
   const results = [];
   TECH_DATA.sectors.forEach(s => {
     s.subsectors.forEach(ss => {
       ss.items.forEach(item => {
         if (!techMatchesFilter(item)) return;
-        if (item.name.toLowerCase().includes(q) || ss.name.toLowerCase().includes(q)) {
+        const nameL = item.name.toLowerCase();
+        const ssL = ss.name.toLowerCase();
+        if (keywords.some(kw => nameL.includes(kw) || ssL.includes(kw))) {
           results.push({ sector: s, subsector: ss, item });
         }
       });
@@ -1219,12 +1353,13 @@ function renderSearch(main, rcDiv) {
   }
 
   const html = results.map(r => {
-    const highlight = (s) => s.replace(new RegExp(`(${q})`, 'gi'), '<mark>$1</mark>');
+    const hlPattern = keywords.map(k => k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|');
+    const highlight = (s) => s.replace(new RegExp(`(${hlPattern})`, 'gi'), '<mark>$1</mark>');
     const pills = LAW_KEYS.filter(k => r.item.laws[k] && state.activeLaws.has(k)).map(k =>
       `<span class="tl-pill tl-${LAW_CLASSES[k]}">${LAW_SHORT[k]}</span>`
     ).join('');
     return `
-      <div class="search-result-item" onclick="state.activeSector=${r.sector.id};state.searchQuery='';document.getElementById('search-input').value='';state.view='overview';buildSectorNav();render()">
+      <div class="search-result-item" onclick="pushHistoryState();state.activeSector=${r.sector.id};state.searchQuery='';document.getElementById('search-input').value='';state.view='overview';buildSectorNav();render()">
         <div class="sri-sector">${r.sector.icon} ${r.sector.name}</div>
         <div class="sri-name">${highlight(r.item.name)}</div>
         <div class="tech-laws">${pills}</div>
@@ -1234,6 +1369,30 @@ function renderSearch(main, rcDiv) {
 
   main.innerHTML = `<div class="search-results">${html}</div>`;
 }
+
+// ─── THEME TOGGLE ───
+function applyTheme(theme) {
+  if (theme === 'light') {
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.getElementById('theme-toggle').innerHTML = '🌙 다크 모드';
+  } else {
+    document.documentElement.removeAttribute('data-theme');
+    document.getElementById('theme-toggle').innerHTML = '☀️ 라이트 모드';
+  }
+}
+
+function toggleTheme() {
+  const current = document.documentElement.getAttribute('data-theme');
+  const next = current === 'light' ? 'dark' : 'light';
+  localStorage.setItem('theme', next);
+  applyTheme(next);
+}
+
+// Apply saved theme on load
+(function() {
+  const saved = localStorage.getItem('theme') || 'dark';
+  applyTheme(saved);
+})();
 
 init();
 </script>
