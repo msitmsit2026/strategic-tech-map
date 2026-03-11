@@ -814,7 +814,77 @@
     .tech-row.dimmed { opacity: 0.25; }
     .sector-card.dimmed { opacity: 0.3; }
 
-    .tech-row.has-note { cursor: pointer; }
+    .tech-row.has-note { cursor: default; }
+
+    /* ─── TECH NAME CLICKABLE ─── */
+    .tech-name-link {
+      cursor: pointer;
+      transition: all 0.15s;
+      border-bottom: 1px dashed transparent;
+    }
+    .tech-name-link:hover {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ─── LAW PILL CLICKABLE ─── */
+    .tl-pill.tl-clickable {
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .tl-pill.tl-clickable:hover {
+      transform: scale(1.1);
+      filter: brightness(1.2);
+    }
+
+    /* ─── SPECS ACCORDION ─── */
+    .specs-accordion {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s cubic-bezier(0.4,0,0.2,1), opacity 0.25s ease;
+      opacity: 0;
+      border-radius: 0 0 8px 8px;
+    }
+    .specs-accordion.open {
+      max-height: 600px;
+      opacity: 1;
+    }
+    .specs-panel {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 0 12px 8px 12px;
+    }
+    .specs-col {
+      background: var(--bg2);
+      padding: 10px 8px;
+      font-size: 11px;
+      line-height: 1.6;
+      color: var(--text);
+      white-space: pre-wrap;
+      word-break: break-word;
+      min-height: 48px;
+    }
+    .specs-col.specs-inactive {
+      opacity: 0.3;
+    }
+    .specs-col-header {
+      background: var(--bg3);
+      padding: 8px;
+      font-size: 10px;
+      font-weight: 700;
+      text-align: center;
+      white-space: nowrap;
+    }
+    .specs-col-header.law-col-a { color: var(--law-a-text); border-bottom: 2px solid var(--law-a); }
+    .specs-col-header.law-col-b { color: var(--law-b-text); border-bottom: 2px solid var(--law-b); }
+    .specs-col-header.law-col-c { color: var(--law-c-text); border-bottom: 2px solid var(--law-c); }
+    .specs-col-header.law-col-d { color: var(--law-d-text); border-bottom: 2px solid var(--law-d); }
+    .specs-col-header.law-col-e { color: var(--law-e-text); border-bottom: 2px solid var(--law-e); }
 
     /* ─── NOTE POPUP ─── */
     .note-overlay {
@@ -1283,17 +1353,31 @@ function renderDetail(main, rcDiv) {
     visibleItems.forEach(item => {
       const row = document.createElement('div');
       row.className = 'tech-row' + (item.note ? ' has-note' : '');
+      const hasSpecs = item.specs && LAW_KEYS.some(k => item.specs[k]);
       const pills = LAW_KEYS.map(k => {
         const active = item.laws[k] && state.activeLaws.has(k);
         return active
-          ? `<span class="tl-pill tl-${LAW_CLASSES[k]}">${LAW_SHORT[k]}</span>`
+          ? `<span class="tl-pill tl-${LAW_CLASSES[k]}${hasSpecs ? ' tl-clickable' : ''}" data-law="${k}">${LAW_SHORT[k]}</span>`
           : `<span class="tl-pill tl-empty">${LAW_SHORT[k]}</span>`;
       }).join('');
       row.innerHTML = `
-        <div class="tech-name">${item.name}</div>
+        <div class="tech-name"><span class="tech-name-link">${item.name}</span></div>
         <div class="tech-laws">${pills}</div>
       `;
-      row.addEventListener('click', () => showNotePopup(item.name, item.note));
+      // Tech name click → popup only
+      row.querySelector('.tech-name-link').addEventListener('click', (e) => {
+        e.stopPropagation();
+        showNotePopup(item.name, item.note);
+      });
+      // Law pill click → accordion toggle
+      if (hasSpecs) {
+        row.querySelectorAll('.tl-clickable').forEach(pill => {
+          pill.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleSpecsAccordion(row, item);
+          });
+        });
+      }
       itemsContainer.appendChild(row);
     });
     container.appendChild(block);
@@ -1478,6 +1562,66 @@ function renderSearch(main, rcDiv) {
   }).join('');
 
   main.innerHTML = `<div class="search-results">${html}</div>`;
+}
+
+// ─── SPECS ACCORDION ───
+let _openAccordionRow = null;
+
+function toggleSpecsAccordion(row, item) {
+  // If this row already has an open accordion, close it
+  const existing = row.nextElementSibling;
+  if (existing && existing.classList.contains('specs-accordion')) {
+    existing.classList.remove('open');
+    setTimeout(() => existing.remove(), 350);
+    _openAccordionRow = null;
+    return;
+  }
+
+  // Close any other open accordion
+  if (_openAccordionRow) {
+    const prev = _openAccordionRow.nextElementSibling;
+    if (prev && prev.classList.contains('specs-accordion')) {
+      prev.classList.remove('open');
+      setTimeout(() => prev.remove(), 350);
+    }
+    _openAccordionRow = null;
+  }
+
+  // Build accordion panel
+  const accordion = document.createElement('div');
+  accordion.className = 'specs-accordion';
+
+  const headers = LAW_KEYS.map(k => {
+    const cls = LAW_CLASSES[k];
+    return `<div class="specs-col-header law-col-${cls}">${LAW_SHORT[k]}</div>`;
+  }).join('');
+
+  const cells = LAW_KEYS.map(k => {
+    const cls = LAW_CLASSES[k];
+    const isActive = item.laws[k];
+    const specVal = item.specs ? item.specs[k] : null;
+    let content = '';
+    if (specVal) {
+      content = specVal.replace(/▶/g, '\n▶').replace(/^\n/, '').replace(/\n/g, '<br>');
+    }
+    return `<div class="specs-col${isActive ? '' : ' specs-inactive'}">${content || ''}</div>`;
+  }).join('');
+
+  accordion.innerHTML = `
+    <div class="specs-panel">
+      ${headers}
+      ${cells}
+    </div>
+  `;
+
+  row.parentNode.insertBefore(accordion, row.nextSibling);
+  // Trigger reflow then open
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      accordion.classList.add('open');
+    });
+  });
+  _openAccordionRow = row;
 }
 
 // ─── NOTE POPUP ───
